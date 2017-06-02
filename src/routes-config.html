@@ -1,0 +1,72 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+
+<dom-module id="routes-config">
+  <template>
+    <iron-ajax auto url="[[routesSrc]]" handle-as="json" last-response="{{routes}}"></iron-ajax>
+    <app-location route="{{route}}"></app-location>
+  </template>
+
+  <script>
+    class RoutesConfig extends Polymer.Element {
+
+      static get is() {
+        return 'routes-config';
+      }
+
+      static get properties() {
+        return {
+          routesSrc: {
+            type: String,
+            value: '/src/routes.json'
+          },
+          routes: {
+            type: Object,
+            observer: '_routesChanged'
+          },
+          route: {
+            type: Object,
+            notify: true,
+            observer: '_routeChanged'
+          },
+          fallbackRoute: {
+            type: String,
+            value: '/'
+          },
+          config: {
+            type: Object,
+            value: () => {
+              return {
+                view: 'index'
+              };
+            },
+            notify: true
+          }
+        };
+      }
+
+      _routeChanged(route) {
+        if (route === undefined) return;
+        if (!this.routes) return;
+
+        let config = this.routes[this.fallbackRoute];
+        if (route.path) {
+          let rpath = route.path.toLowerCase().trim();
+          if (this.routes[rpath]) {
+            config = this.routes[rpath];
+          }
+        }
+        if (config) this.config = config;
+      }
+
+      _routesChanged(routes) {
+        if (routes === undefined) return;
+        this._routeChanged(this.route);
+      }
+    }
+
+    window.customElements.define(RoutesConfig.is, RoutesConfig);
+  </script>
+</dom-module>

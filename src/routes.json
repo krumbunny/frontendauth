@@ -1,0 +1,23 @@
+{
+  "/": {
+    "view" : "main",
+    "tab": "about",
+    "content" : "/content/about.md",
+    "next_event" : "/content/next_event.md",
+    "coda" : "/content/coda.md"
+  },
+  "/learn": {
+    "view" : "video",
+    "tab": "learn",
+    "videos" : [
+      "iJpqlwzOnts",
+      "NmT5-j3-xzg",
+      "0PD1WamgwUI"
+    ]
+  },
+  "/start": {
+    "view" : "text",
+    "tab": "start",
+    "content" : "/content/start.md"
+  }
+}

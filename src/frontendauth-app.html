@@ -1,0 +1,110 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+
+<link href="https://fonts.googleapis.com/css?family=Keania+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=News+Cycle" rel="stylesheet">
+
+<link rel="import" href="routes-config.html">
+<link rel="import" href="main-view.html">
+<link rel="import" href="video-view.html">
+<link rel="import" href="text-view.html">
+
+<dom-module id="frontendauth-app">
+  <template>
+    <style>
+       :host {
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
+
+        display: block;
+      }
+
+      app-header-layout {
+        margin-bottom: 40px;
+      }
+
+      app-header {
+        color: #fff;
+        background-image: url('frontendauth-banner.jpg');
+        background-size: 100%;
+        background-position: top center;
+      }
+
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+
+      app-toolbar {
+        height: 200px;
+      }
+
+      app-toolbar a[main-title] {
+        text-align: center;
+        padding-bottom: 12px;
+        font-size: 48px;
+        font-family: 'Keania One', cursive;
+        color: #fff;
+        pointer-events: auto;
+        text-decoration: none;
+      }
+
+      paper-tab[link] a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-decoration: none;
+      }
+    </style>
+
+    <routes-config config="{{config}}"></routes-config>
+
+    <app-header-layout has-scrolling-region fullbleed>
+
+      <app-header slot="header" condenses reveals effects="waterfall">
+        <app-toolbar>
+          <a href="/" main-title>FRONT END AUTHORITY</a>
+          <paper-tabs selected="[[config.tab]]" attr-for-selected="name" bottom-item>
+            <paper-tab name="about" link><a href="/">About</a></paper-tab>
+            <paper-tab name="learn" link><a href="/learn">Learn</a></paper-tab>
+            <paper-tab name="start" link><a href="/start">Start a Chapter</a></paper-tab>
+          </paper-tabs>
+        </app-toolbar>
+      </app-header>
+
+      <iron-pages selected="[[config.view]]" attr-for-selected="name" fallback-selection="main" role="main">
+        <main-view name="main" config='[[config]]'>main problem</main-view>
+        <video-view name="video" config='[[config]]'>Video problem</video-view>
+        <text-view name="text" config='[[config]]'>text problem</text-view>
+      </iron-pages>
+    </app-header-layout>
+  </template>
+
+  <script>
+    class FrontendauthApp extends Polymer.Element {
+
+      static get is() {
+        return 'frontendauth-app';
+      }
+
+      static get properties() {
+        return {
+          config: Object
+        };
+      }
+    }
+
+    window.customElements.define(FrontendauthApp.is, FrontendauthApp);
+  </script>
+</dom-module>

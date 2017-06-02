@@ -1,0 +1,49 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/google-youtube/google-youtube.html">
+
+<dom-module id="video-view">
+  <template>
+    <style>
+       :host {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+      }
+
+      h2 {
+        font-family: 'News Cycle', sans-serif;
+        font-size: 24px;
+      }
+
+      google-youtube {
+        margin: 18px 0;
+      }
+    </style>
+
+    <h2>Check out our past sessions:</h2>
+
+    <dom-repeat items="[[config.videos]]" as="vid">
+      <template>
+        <google-youtube video-id="[[vid]]"></google-youtube>
+      </template>
+    </dom-repeat>
+
+  </template>
+
+  <script>
+    class VideoView extends Polymer.Element {
+
+      static get is() {
+        return 'video-view';
+      }
+
+      static get properties() {
+        return {
+          config: Object
+        };
+      }
+    }
+
+    window.customElements.define(VideoView.is, VideoView);
+  </script>
+</dom-module>

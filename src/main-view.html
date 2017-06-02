@@ -1,0 +1,121 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="chimp-signup.html">
+
+<dom-module id="main-view">
+  <template>
+    <style>
+       :host {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+      }
+
+      .main-content {
+        font-family: 'News Cycle', sans-serif;
+        font-size: 24px;
+      }
+
+      .main-content,
+      .coda {
+        max-width: 700px;
+        margin: 0 20px;
+      }
+
+      .card-row {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .card-row paper-card {
+        width: 400px;
+        margin: 12px;
+        /*flex: 0;*/
+      }
+
+      .card-content {
+        padding: 0 24px;
+      }
+
+      .card-actions paper-button {
+        margin: 12px 12px;
+        color: white;
+        background-color: #800;
+      }
+    </style>
+
+    <marked-element class="main-content">
+      <script type="text/markdown" src="[[config.content]]"></script>
+    </marked-element>
+
+    <div class="card-row">
+      <paper-card class="social">
+        <div class="card-content">
+          <h3>See what we're up to</h3>
+          <p><a href="https://github.com/frontendauth">Github</a></p>
+          <p><a href="https://twitter.com/frontendauth">Twitter</a></p>
+          <p><a href="https://www.meetup.com/frontendauthority/">Meetup</a></p>
+        </div>
+      </paper-card>
+
+      <paper-card class="meetup">
+        <div class="card-content">
+          <marked-element>
+            <script type="text/markdown" src="[[config.next_event]]"></script>
+          </marked-element>
+        </div>
+        <div class="card-actions">
+          <paper-button>RSVP</paper-button>
+        </div>
+      </paper-card>
+
+       <paper-card class="mail-list">
+        <div class="card-content">
+          <chimp-signup></chimp-signup>
+        </div>
+      </paper-card>
+
+   </div>
+
+    <marked-element class="coda">
+      <script type="text/markdown" src="[[config.coda]]"></script>
+    </marked-element>
+
+  </template>
+
+  <script>
+    class MainView extends Polymer.Element {
+
+      static get is() {
+        return 'main-view';
+      }
+
+      static get properties() {
+        return {
+          config: Object
+        };
+      }
+
+      constructor() {
+        super();
+      }
+
+      ready() {
+        super.ready();
+
+        Polymer.RenderStatus.afterNextRender(this, function () {
+
+        });
+      }
+
+    }
+
+    window.customElements.define(MainView.is, MainView);
+  </script>
+</dom-module>

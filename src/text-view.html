@@ -1,0 +1,41 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
+
+<dom-module id="text-view">
+  <template>
+    <style>
+       :host {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+      }
+
+      .main-content {
+        max-width: 700px;
+        margin: 0 20px;
+      }
+    </style>
+
+    <marked-element class="main-content">
+      <script type="text/markdown" src="[[config.content]]"></script>
+    </marked-element>
+
+  </template>
+
+  <script>
+    class TextView extends Polymer.Element {
+
+      static get is() {
+        return 'text-view';
+      }
+
+      static get properties() {
+        return {
+          config: Object
+        };
+      }
+    }
+
+    window.customElements.define(TextView.is, TextView);
+  </script>
+</dom-module>

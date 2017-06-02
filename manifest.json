@@ -1,0 +1,7 @@
+{
+  "name": "frontendauth",
+  "short_name": "frontendauth",
+  "description": "Front End Authority site using Polymer",
+  "start_url": "/",
+  "display": "standalone"
+}

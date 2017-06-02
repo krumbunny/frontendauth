@@ -70,23 +70,23 @@
 
     <routes-config config="{{config}}"></routes-config>
 
-    <app-header-layout has-scrolling-region fullbleed>
+    <app-header-layout has-scrolling-region="" fullbleed="">
 
-      <app-header slot="header" condenses reveals effects="waterfall">
+      <app-header slot="header" condenses="" reveals="" effects="waterfall">
         <app-toolbar>
-          <a href="/" main-title>FRONT END AUTHORITY</a>
-          <paper-tabs selected="[[config.tab]]" attr-for-selected="name" bottom-item>
-            <paper-tab name="about" link><a href="/">About</a></paper-tab>
-            <paper-tab name="learn" link><a href="/learn">Learn</a></paper-tab>
-            <paper-tab name="start" link><a href="/start">Start a Chapter</a></paper-tab>
+          <a href="/" main-title="">FRONT END AUTHORITY</a>
+          <paper-tabs selected="[[config.tab]]" attr-for-selected="name" bottom-item="">
+            <paper-tab name="about" link=""><a href="/">About</a></paper-tab>
+            <paper-tab name="learn" link=""><a href="/learn">Learn</a></paper-tab>
+            <paper-tab name="start" link=""><a href="/start">Start a Chapter</a></paper-tab>
           </paper-tabs>
         </app-toolbar>
       </app-header>
 
       <iron-pages selected="[[config.view]]" attr-for-selected="name" fallback-selection="main" role="main">
-        <main-view name="main" config='[[config]]'>main problem</main-view>
-        <video-view name="video" config='[[config]]'>Video problem</video-view>
-        <text-view name="text" config='[[config]]'>text problem</text-view>
+        <main-view name="main" config="[[config]]">main problem</main-view>
+        <video-view name="video" config="[[config]]">Video problem</video-view>
+        <text-view name="text" config="[[config]]">text problem</text-view>
       </iron-pages>
     </app-header-layout>
   </template>

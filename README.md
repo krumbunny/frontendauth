@@ -24,10 +24,14 @@ This will create builds of your application in the `build/` directory, optimized
 $ polymer serve build/default
 ```
 
-## Running Tests
+## Deploying to Firebase
+
+Firebase has a free hosting service that handles the URL rewrite rules for a Polymer SPA. 
+Following the [Polymer Deploy to Firebase](https://www.polymer-project.org/2.0/start/toolbox/deploy) 
+instructions using the Firebase CLI:
 
 ```
-$ polymer test
+$ firebase deploy
 ```
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+Deploys the application to the firebase static hosting service, once you have set up your own account.

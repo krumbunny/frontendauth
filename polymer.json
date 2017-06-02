@@ -3,5 +3,11 @@
     "rules": [
       "polymer-2"
     ]
-  }
+  },
+  "sources": [
+    "src/**/*",
+    "images/**/*",
+    "content/**/*",
+    "bower.json"
+  ]
 }

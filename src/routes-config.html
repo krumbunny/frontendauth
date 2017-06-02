@@ -18,10 +18,7 @@
 
       static get properties() {
         return {
-          routesSrc: {
-            type: String,
-            value: '/src/routes.json'
-          },
+          routesSrc: String,
           routes: {
             type: Object,
             observer: '_routesChanged'
